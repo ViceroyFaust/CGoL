@@ -5,9 +5,7 @@
 int xMax = 100;
 int yMax = 100;
 
-std::unordered_set<std::pair<int, int>> cells;
-
-void nextGen() {
+std::unordered_set<std::pair<int, int>> nextGen(const std::unordered_set<std::pair<int, int>>& cells) {
     
 }
 
