@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <utility>
-#include <unordered_set>
+#include <vector>
 
 int xMax = 100;
 int yMax = 100;
 
-std::unordered_set<std::pair<int, int>> nextGen(const std::unordered_set<std::pair<int, int>>& cells) {
-    
+std::vector<std::pair<int, int>> nextGen(const std::vector<std::pair<int, int>>& curGen) {
+
 }
 
 int main (/*int argc, char* argv[]*/) {
