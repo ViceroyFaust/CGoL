@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <algorithm>
 
+void add_cell(bool* grid, int num_columns, int row, int col) {
+    grid[col + num_columns * row] = true;
+}
+
 void print_life(const bool* grid, int num_rows, int num_columns) {
     for (int row = 0; row < num_rows; ++row) {
         for (int col = 0; col < num_columns; ++col) {
@@ -11,6 +15,7 @@ void print_life(const bool* grid, int num_rows, int num_columns) {
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 int main(/*int argc, char* argv[]*/) {
@@ -21,18 +26,18 @@ int main(/*int argc, char* argv[]*/) {
     bool* curGrid = new bool[num_rows * num_columns]();
     bool* newGrid = new bool[num_rows * num_columns]();
     // Constructing a 5x5 square with no corners
-    curGrid[4 + num_columns * 3] = true;
-    curGrid[5 + num_columns * 3] = true;
-    curGrid[6 + num_columns * 3] = true;
-    curGrid[3 + num_columns * 4] = true;
-    curGrid[7 + num_columns * 4] = true;
-    curGrid[3 + num_columns * 5] = true;
-    curGrid[7 + num_columns * 5] = true;
-    curGrid[3 + num_columns * 6] = true;
-    curGrid[7 + num_columns * 6] = true;
-    curGrid[4 + num_columns * 7] = true;
-    curGrid[5 + num_columns * 7] = true;
-    curGrid[6 + num_columns * 7] = true;
+    add_cell(curGrid, num_columns, 3, 4);
+    add_cell(curGrid, num_columns, 3, 5);
+    add_cell(curGrid, num_columns, 3, 6);
+    add_cell(curGrid, num_columns, 4, 3);
+    add_cell(curGrid, num_columns, 4, 7);
+    add_cell(curGrid, num_columns, 5, 3);
+    add_cell(curGrid, num_columns, 5, 7);
+    add_cell(curGrid, num_columns, 6, 3);
+    add_cell(curGrid, num_columns, 6, 7);
+    add_cell(curGrid, num_columns, 7, 4);
+    add_cell(curGrid, num_columns, 7, 5);
+    add_cell(curGrid, num_columns, 7, 6);
     // Num of gen repetitions
     for (int i = 0; i < generations; ++i) {
         print_life(curGrid, num_rows, num_columns);
