@@ -1,5 +1,17 @@
-#include <algorithm>
 #include <stdio.h>
+#include <algorithm>
+
+void print_life(const bool* grid, int num_rows, int num_columns) {
+    for (int row = 0; row < num_rows; ++row) {
+        for (int col = 0; col < num_columns; ++col) {
+            if (grid[col + num_columns * row])
+                printf("X ");
+            else
+                printf(". ");
+        }
+        printf("\n");
+    }
+}
 
 int main(/*int argc, char* argv[]*/) {
     // Row-Major order. Formula is [col + num_columns * row]
@@ -23,6 +35,7 @@ int main(/*int argc, char* argv[]*/) {
     curGrid[6 + num_columns * 7] = true;
     // Num of gen repetitions
     for (int i = 0; i < generations; ++i) {
+        print_life(curGrid, num_rows, num_columns);
         // Generation loop
         for (int row = 1; row < num_rows - 1; ++row) {
             for (int col = 1; col < num_columns - 1; ++col) {
@@ -43,14 +56,5 @@ int main(/*int argc, char* argv[]*/) {
         }
         std::swap(curGrid, newGrid);
     }
-    // print loop for all of the final live cell points
-    for (int row = 0; row < num_rows; ++row) {
-        for (int col = 0; col < num_columns; ++col) {
-            if (curGrid[col + num_columns * row])
-                printf("X ");
-            else
-                printf(". ");
-        }
-        printf("\n");
-    }
+    print_life(curGrid, num_rows, num_columns);
 }
